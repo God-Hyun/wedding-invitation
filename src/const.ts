@@ -39,7 +39,7 @@ export const KMAP_PLACE_ID = 27501134
 
 export const BRIDE_FULLNAME = "윤유진"
 export const BRIDE_FIRSTNAME = "유진"
-export const BRIDE_TITLE = "차녀" // TODO: 장녀/차녀 확인
+export const BRIDE_TITLE = "차녀"
 export const BRIDE_FATHER = "윤영환"
 export const BRIDE_MOTHER = "이선화"
 export const BRIDE_INFO = [
@@ -65,7 +65,7 @@ export const BRIDE_INFO = [
 
 export const GROOM_FULLNAME = "신호현"
 export const GROOM_FIRSTNAME = "호현"
-export const GROOM_TITLE = "장남" // TODO: 장남/차남 확인
+export const GROOM_TITLE = "장남"
 export const GROOM_FATHER = "신동주"
 export const GROOM_MOTHER = "김양옥"
 export const GROOM_INFO = [
