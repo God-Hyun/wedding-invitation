@@ -20,7 +20,7 @@ export const LOCATION = "밀리토피아호텔 바이 마린 3F 카멜리아홀"
 export const LOCATION_ADDRESS = "경기 성남시 수정구 위례대로 83 밀리토피아호텔 바이마린 웨딩센터"
 
 // 카카오톡 공유 시 위치 정보로 사용할 주소.
-export const SHARE_ADDRESS = LOCATION_ADDRESS
+export const SHARE_ADDRESS = "밀리토피아호텔 바이마린 웨딩센터"
 export const SHARE_ADDRESS_TITLE = LOCATION
 
 // TODO: 네이버 지도 및 카카오 네비게이션에 사용할 좌표. [경도, 위도] 형식.
