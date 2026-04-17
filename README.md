@@ -1,8 +1,8 @@
 # 신호현 ❤️ 윤유진 모바일 청첩장
 
-- **배포 URL**: https://wedding-invitation-woad-nu.vercel.app
-- **결혼식 일시**: 2026년 9월 12일 토요일 오후 2시
-- **예식장**: 밀리토피아호텔 바이 마린 3F 카멜리아홀
+- **배포 URL**: 
+- **결혼식 일시**: 
+- **예식장**: 
 
 ## 기술 스택
 
@@ -50,4 +50,4 @@ npm run dev
 
 - 저장소: https://github.com/God-Hyun/wedding-invitation-server
 - 배포: Render (Free tier)
-- 관리자 페이지: https://wedding-invitation-server-d373.onrender.com/admin
+- 관리자 페이지: 
