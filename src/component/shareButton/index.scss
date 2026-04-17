@@ -1,12 +1,45 @@
 .share-button {
-  .ktalk-share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+
+  .ktalk-share,
+  .link-copy {
     position: relative;
     z-index: 3;
     font-size: 0.8rem;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  .ktalk-share {
+    background-color: #fee500;
+    color: #3c1e1e;
     img {
-      width: 0.7rem;
-      height: 0.7rem;
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
+
+  .link-copy {
+    background-color: var(--white-color);
+    border: solid 0.05rem var(--alt-color);
+    color: var(--alt-color);
+    svg {
+      width: 0.8rem;
+      height: 0.8rem;
+      stroke: var(--alt-color);
     }
   }
 }
