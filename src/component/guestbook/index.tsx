@@ -33,8 +33,6 @@ export const GuestBook = () => {
   const { openModal, closeModal } = useModal()
 
   const [posts, setPosts] = useState<Post[]>([])
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
   const loadPosts = async () => {
     if (SERVER_URL) {
       try {
@@ -135,25 +133,15 @@ export const GuestBook = () => {
                     </div>
                   </div>
                 ),
-                content: <WriteGuestBookModal loadPosts={loadPosts} onLoadingChange={setIsSubmitting} />,
+                content: <WriteGuestBookModal loadPosts={loadPosts} />,
                 footer: (
-                  <>
-                    <Button
-                      buttonStyle="style2"
-                      type="submit"
-                      form="guestbook-write-form"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "저장 중..." : "저장하기"}
-                    </Button>
-                    <Button
-                      buttonStyle="style2"
-                      className="bg-light-grey-color text-dark-color"
-                      onClick={closeModal}
-                    >
-                      닫기
-                    </Button>
-                  </>
+                  <Button
+                    buttonStyle="style2"
+                    className="bg-light-grey-color text-dark-color"
+                    onClick={closeModal}
+                  >
+                    닫기
+                  </Button>
                 ),
               })
             }
@@ -189,7 +177,7 @@ export const GuestBook = () => {
   )
 }
 
-const WriteGuestBookModal = ({ loadPosts, onLoadingChange }: { loadPosts: () => void; onLoadingChange: (loading: boolean) => void }) => {
+const WriteGuestBookModal = ({ loadPosts }: { loadPosts: () => void }) => {
   const inputRef = useRef({}) as React.RefObject<{
     name: HTMLInputElement
     content: HTMLTextAreaElement
@@ -198,18 +186,13 @@ const WriteGuestBookModal = ({ loadPosts, onLoadingChange }: { loadPosts: () => 
   const { closeModal } = useModal()
   const [loading, setLoading] = useState(false)
 
-  const setLoadingState = (value: boolean) => {
-    setLoading(value)
-    onLoadingChange(value)
-  }
-
   return (
     <form
       id="guestbook-write-form"
       className="form"
       onSubmit={async (e) => {
         e.preventDefault()
-        setLoadingState(true)
+        setLoading(true)
         try {
           const name = inputRef.current.name.value.trim()
           const content = inputRef.current.content.value.trim()
@@ -261,7 +244,7 @@ const WriteGuestBookModal = ({ loadPosts, onLoadingChange }: { loadPosts: () => 
         } catch {
           alert("방명록 작성에 실패했습니다.")
         } finally {
-          setLoadingState(false)
+          setLoading(false)
         }
       }}
     >
@@ -297,6 +280,9 @@ const WriteGuestBookModal = ({ loadPosts, onLoadingChange }: { loadPosts: () => 
         }}
         maxLength={RULES.password.maxLength}
       />
+      <Button buttonStyle="style2" type="submit" disabled={loading}>
+        {loading ? "저장 중..." : "저장하기"}
+      </Button>
     </form>
   )
 }
