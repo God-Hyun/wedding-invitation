@@ -33,6 +33,7 @@ export const GuestBook = () => {
   const { openModal, closeModal } = useModal()
 
   const [posts, setPosts] = useState<Post[]>([])
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const loadPosts = async () => {
     if (SERVER_URL) {
@@ -134,15 +135,16 @@ export const GuestBook = () => {
                     </div>
                   </div>
                 ),
-                content: <WriteGuestBookModal loadPosts={loadPosts} />,
+                content: <WriteGuestBookModal loadPosts={loadPosts} onLoadingChange={setIsSubmitting} />,
                 footer: (
                   <>
                     <Button
                       buttonStyle="style2"
                       type="submit"
                       form="guestbook-write-form"
+                      disabled={isSubmitting}
                     >
-                      저장하기
+                      {isSubmitting ? "저장 중..." : "저장하기"}
                     </Button>
                     <Button
                       buttonStyle="style2"
@@ -187,7 +189,7 @@ export const GuestBook = () => {
   )
 }
 
-const WriteGuestBookModal = ({ loadPosts }: { loadPosts: () => void }) => {
+const WriteGuestBookModal = ({ loadPosts, onLoadingChange }: { loadPosts: () => void; onLoadingChange: (loading: boolean) => void }) => {
   const inputRef = useRef({}) as React.RefObject<{
     name: HTMLInputElement
     content: HTMLTextAreaElement
@@ -196,13 +198,18 @@ const WriteGuestBookModal = ({ loadPosts }: { loadPosts: () => void }) => {
   const { closeModal } = useModal()
   const [loading, setLoading] = useState(false)
 
+  const setLoadingState = (value: boolean) => {
+    setLoading(value)
+    onLoadingChange(value)
+  }
+
   return (
     <form
       id="guestbook-write-form"
       className="form"
       onSubmit={async (e) => {
         e.preventDefault()
-        setLoading(true)
+        setLoadingState(true)
         try {
           const name = inputRef.current.name.value.trim()
           const content = inputRef.current.content.value.trim()
@@ -254,7 +261,7 @@ const WriteGuestBookModal = ({ loadPosts }: { loadPosts: () => void }) => {
         } catch {
           alert("방명록 작성에 실패했습니다.")
         } finally {
-          setLoading(false)
+          setLoadingState(false)
         }
       }}
     >
