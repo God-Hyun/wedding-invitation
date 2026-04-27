@@ -82,22 +82,13 @@ export const GuestBook = () => {
                       />
                     ),
                     footer: (
-                      <>
-                        <Button
-                          buttonStyle="style2"
-                          type="submit"
-                          form="guestbook-delete-form"
-                        >
-                          삭제하기
-                        </Button>
-                        <Button
-                          buttonStyle="style2"
-                          className="bg-light-grey-color text-dark-color"
-                          onClick={closeModal}
-                        >
-                          닫기
-                        </Button>
-                      </>
+                      <Button
+                        buttonStyle="style2"
+                        className="bg-light-grey-color text-dark-color"
+                        onClick={closeModal}
+                      >
+                        닫기
+                      </Button>
                     ),
                   })
                 }
@@ -364,22 +355,13 @@ const AllGuestBookModal = ({
                       />
                     ),
                     footer: (
-                      <>
-                        <Button
-                          buttonStyle="style2"
-                          type="submit"
-                          form="guestbook-delete-form"
-                        >
-                          삭제하기
-                        </Button>
-                        <Button
-                          buttonStyle="style2"
-                          className="bg-light-grey-color text-dark-color"
-                          onClick={closeModal}
-                        >
-                          닫기
-                        </Button>
-                      </>
+                      <Button
+                        buttonStyle="style2"
+                        className="bg-light-grey-color text-dark-color"
+                        onClick={closeModal}
+                      >
+                        닫기
+                      </Button>
                     ),
                   })
                 }
@@ -503,6 +485,9 @@ const DeleteGuestBookModal = ({
         ref={inputRef}
         maxLength={RULES.password.maxLength}
       />
+      <Button buttonStyle="style2" type="submit" disabled={loading}>
+        {loading ? "삭제 중..." : "삭제하기"}
+      </Button>
     </form>
   )
 }
