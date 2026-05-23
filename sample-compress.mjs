@@ -9,7 +9,8 @@ const tasks = [
     height: 1200,
     quality: 90,
     format: "png",
-    fit: "contain",
+    fit: "cover",
+    position: "south",
   },
   {
     src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884.jpg",
@@ -18,7 +19,8 @@ const tasks = [
     height: 1200,
     quality: 90,
     format: "png",
-    fit: "contain",
+    fit: "cover",
+    position: "south",
   },
 ]
 
@@ -32,6 +34,7 @@ for (const t of tasks) {
       width: t.width,
       height: t.height,
       fit: t.fit || "cover",
+      position: t.position || "centre",
       background: { r: 255, g: 255, b: 255, alpha: 1 },
       withoutEnlargement: false,
     })
