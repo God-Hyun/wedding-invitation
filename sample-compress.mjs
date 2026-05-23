@@ -3,7 +3,7 @@ import { statSync } from "fs"
 
 const tasks = [
   {
-    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884.jpg",
+    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884_2JPG.JPG",
     out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/public/preview_image.png",
     width: 1200,
     height: 1200,
@@ -13,7 +13,7 @@ const tasks = [
     position: "south",
   },
   {
-    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884.jpg",
+    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884_2JPG.JPG",
     out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/public/preview_og.png",
     width: 1200,
     height: 1200,
