@@ -6,31 +6,38 @@ const tasks = [
     src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884.jpg",
     out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/public/preview_image.png",
     width: 1200,
+    height: 1500,
     quality: 90,
     format: "png",
+    fit: "contain",
   },
   {
     src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884.jpg",
     out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/public/preview_og.png",
     width: 1200,
+    height: 1500,
     quality: 90,
     format: "png",
-  },
-  {
-    src: "C:/Users/Godhyun/Desktop/보정본/모청/DSC09991 0_1.JPG",
-    out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/src/images/image11.jpg",
-    width: 1600,
-    quality: 90,
-    format: "jpeg",
+    fit: "contain",
   },
 ]
 
 for (const t of tasks) {
   const origSize = statSync(t.src).size
 
-  const pipeline = sharp(t.src)
-    .rotate()
-    .resize({ width: t.width, withoutEnlargement: true })
+  let pipeline = sharp(t.src).rotate()
+
+  if (t.height) {
+    pipeline = pipeline.resize({
+      width: t.width,
+      height: t.height,
+      fit: t.fit || "cover",
+      background: { r: 255, g: 255, b: 255, alpha: 1 },
+      withoutEnlargement: false,
+    })
+  } else {
+    pipeline = pipeline.resize({ width: t.width, withoutEnlargement: true })
+  }
 
   if (t.format === "jpeg") {
     await pipeline.jpeg({ quality: t.quality, mozjpeg: true }).toFile(t.out)
