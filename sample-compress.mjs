@@ -3,11 +3,22 @@ import { statSync } from "fs"
 
 const tasks = [
   {
-    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_165808477.jpg",
-    out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/src/images/image7.jpg",
-    width: 1600,
+    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884.jpg",
+    out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/public/preview_image.png",
+    width: 1200,
+    height: 1200,
     quality: 90,
-    format: "jpeg",
+    format: "png",
+    fit: "contain",
+  },
+  {
+    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884.jpg",
+    out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/public/preview_og.png",
+    width: 1200,
+    height: 1200,
+    quality: 90,
+    format: "png",
+    fit: "contain",
   },
 ]
 
