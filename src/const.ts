@@ -17,7 +17,7 @@ export const WEDDING_DATE_FORMAT = `YYYY년 MMMM D일 dddd A h시${WEDDING_DATE.
 export const HOLIDAYS: number[] = []
 
 export const LOCATION = "밀리토피아호텔 바이 마린 3F 카멜리아홀"
-export const LOCATION_ADDRESS = "경기 성남시 수정구 위례대로 83 밀리토피아호텔 바이마린 웨딩센터"
+export const LOCATION_ADDRESS = "경기 성남시 수정구 위례대로 83\n밀리토피아호텔 바이마린 웨딩센터"
 
 // 카카오톡 공유 시 위치 정보로 사용할 주소.
 export const SHARE_ADDRESS = "밀리토피아호텔 바이마린 웨딩센터"
