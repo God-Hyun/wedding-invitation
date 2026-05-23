@@ -49,7 +49,7 @@ export const ShareButton = () => {
                 "//" +
                 window.location.host +
                 baseUrl +
-                "preview_image.png",
+                "preview_image.png?v=2",
               link: {
                 mobileWebUrl:
                   window.location.protocol +
