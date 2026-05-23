@@ -3,7 +3,7 @@ import { statSync } from "fs"
 
 const tasks = [
   {
-    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884.jpg",
+    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_165808477.jpg",
     out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/src/images/image7.jpg",
     width: 1600,
     quality: 90,
