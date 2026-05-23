@@ -12,7 +12,7 @@
 
 :root {
   --theme-color: #ff8585;
-  --theme-bg-color: #ffe7e7;
+  --theme-bg-color: #ffffff;
   --alt-color: #c28080;
   --alt-bg-color: #f4f0f0;
   --dark-color: #282c34;
@@ -98,6 +98,18 @@ body {
   box-sizing: border-box;
   color: var(--dark-color);
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: auto;
 }
 
 .background {

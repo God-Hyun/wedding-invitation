@@ -1,7 +1,7 @@
+import { useEffect } from "react"
 import { Cover } from "./component/cover"
 import { Location } from "./component/location"
 import "./App.scss"
-import { BGEffect } from "./component/bgEffect"
 import { Invitation } from "./component/invitation"
 import { Calendar } from "./component/calendar"
 import { Gallery } from "./component/gallery"
@@ -12,9 +12,41 @@ import { ShareButton } from "./component/shareButton"
 import { STATIC_ONLY } from "./env"
 
 function App() {
+  useEffect(() => {
+    const isFormField = (target: HTMLElement) =>
+      target.tagName === "INPUT" || target.tagName === "TEXTAREA"
+
+    const blockContext = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (isFormField(target)) return
+      e.preventDefault()
+    }
+    const blockDrag = (e: DragEvent) => {
+      e.preventDefault()
+    }
+    const blockShortcut = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement
+      if (isFormField(target)) return
+      if (e.ctrlKey || e.metaKey) {
+        const k = e.key.toLowerCase()
+        if (k === "s" || k === "u") {
+          e.preventDefault()
+        }
+      }
+    }
+
+    document.addEventListener("contextmenu", blockContext)
+    document.addEventListener("dragstart", blockDrag)
+    document.addEventListener("keydown", blockShortcut)
+    return () => {
+      document.removeEventListener("contextmenu", blockContext)
+      document.removeEventListener("dragstart", blockDrag)
+      document.removeEventListener("keydown", blockShortcut)
+    }
+  }, [])
+
   return (
     <div className="background">
-      <BGEffect />
       <div className="card-view">
         <LazyDiv className="card-group">
           {/* 표지 */}
