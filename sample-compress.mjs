@@ -1,55 +1,45 @@
 import sharp from "sharp"
-import { statSync, readdirSync } from "fs"
-import { resolve, join } from "path"
+import { statSync } from "fs"
 
-const SRC_DIR = "C:/Users/Godhyun/Desktop/보정본/모청"
-const OUT_DIR = "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/src/images"
-
-const WIDTH = 1600
-const QUALITY = 90
-
-const mapping = [
-  { src: "메인.jpg", out: "cover.jpg" },
-  ...Array.from({ length: 14 }, (_, i) => ({
-    srcCandidates: [`${i + 1}.jpg`, `${i + 1}.JPG`],
-    out: `image${i + 1}.jpg`,
-  })),
+const tasks = [
+  {
+    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884.jpg",
+    out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/public/preview_image.png",
+    width: 1200,
+    quality: 90,
+    format: "png",
+  },
+  {
+    src: "C:/Users/Godhyun/Downloads/KakaoTalk_20260523_162148884.jpg",
+    out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/public/preview_og.png",
+    width: 1200,
+    quality: 90,
+    format: "png",
+  },
+  {
+    src: "C:/Users/Godhyun/Desktop/보정본/모청/DSC09991 0_1.JPG",
+    out: "C:/Users/Godhyun/TotalProject/Wedding/wedding-invitation/src/images/image11.jpg",
+    width: 1600,
+    quality: 90,
+    format: "jpeg",
+  },
 ]
 
-const files = readdirSync(SRC_DIR)
+for (const t of tasks) {
+  const origSize = statSync(t.src).size
 
-let totalOriginal = 0
-let totalCompressed = 0
-
-for (const m of mapping) {
-  let srcName = m.src
-  if (!srcName) {
-    srcName = m.srcCandidates.find((c) => files.includes(c))
-  }
-  if (!srcName) {
-    console.log(`SKIP: ${m.out} (source not found)`)
-    continue
-  }
-
-  const srcPath = join(SRC_DIR, srcName)
-  const outPath = resolve(OUT_DIR, m.out)
-
-  const origSize = statSync(srcPath).size
-  totalOriginal += origSize
-
-  await sharp(srcPath)
+  const pipeline = sharp(t.src)
     .rotate()
-    .resize({ width: WIDTH, withoutEnlargement: true })
-    .jpeg({ quality: QUALITY, mozjpeg: true })
-    .toFile(outPath)
+    .resize({ width: t.width, withoutEnlargement: true })
 
-  const newSize = statSync(outPath).size
-  totalCompressed += newSize
+  if (t.format === "jpeg") {
+    await pipeline.jpeg({ quality: t.quality, mozjpeg: true }).toFile(t.out)
+  } else {
+    await pipeline.png({ quality: t.quality, compressionLevel: 9 }).toFile(t.out)
+  }
+
+  const newSize = statSync(t.out).size
   console.log(
-    `${srcName} -> ${m.out}: ${(origSize / 1024 / 1024).toFixed(1)}MB -> ${(newSize / 1024).toFixed(0)}KB`,
+    `${t.src.split("/").pop()} -> ${t.out.split("/").pop()}: ${(origSize / 1024 / 1024).toFixed(1)}MB -> ${(newSize / 1024).toFixed(0)}KB`,
   )
 }
-
-console.log(
-  `\n합계: ${(totalOriginal / 1024 / 1024).toFixed(1)}MB -> ${(totalCompressed / 1024 / 1024).toFixed(2)}MB`,
-)
