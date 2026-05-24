@@ -58,7 +58,9 @@ export const AttendanceInfo = () => {
             <br />
             <CalendarIcon /> {WEDDING_DATE.format(WEDDING_DATE_FORMAT)}
             <br />
-            <MarkerIcon /> {LOCATION}
+            <MarkerIcon /> 밀리토피아호텔 바이 마린
+            <br />
+            <span style={{ paddingLeft: "1.5rem" }}>3F 카멜리아홀</span>
           </div>
         </>
       ),
