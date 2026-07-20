@@ -82,11 +82,19 @@ button {
   padding: 0;
 }
 
+html {
+  // 핀치 줌은 상위 요소 기준으로 판정되므로 html 에도 함께 적용
+  touch-action: pan-x pan-y;
+}
+
 body {
   margin: 0;
   overflow-x: hidden;
   overflow-y: auto;
   height: 100vh;
+  // 세로/가로 스크롤은 허용하되 핀치 줌·더블탭 줌은 브라우저 레벨에서 차단
+  // (지도는 자체 컨테이너라 별도로 확대 유지됨)
+  touch-action: pan-x pan-y;
   &.modal-open {
     overflow-y: hidden;
   }
