@@ -46,19 +46,19 @@ export const BRIDE_INFO = [
   {
     relation: "신부",
     name: BRIDE_FULLNAME,
-    phone: "010-0000-0000", // TODO: 연락처 입력
+    phone: "010-0000-0000", // TODO: 연락처 입력 (예정: 010-3303-9837)
     account: "기업은행 11312403601011", // TODO: 계좌 입력
   },
   {
     relation: "신부 아버지",
     name: BRIDE_FATHER,
-    phone: "010-0000-0000",
+    phone: "010-0000-0000", // TODO: 연락처 입력 (예정: 010-6318-1901)
     account: "우리은행 339-143114-02-001",
   },
   {
     relation: "신부 어머니",
     name: BRIDE_MOTHER,
-    phone: "010-0000-0000",
+    phone: "010-0000-0000", // TODO: 연락처 입력 (예정: 010-8739-9837)
     account: "신한은행 110136109547",
   },
 ]
@@ -72,19 +72,19 @@ export const GROOM_INFO = [
   {
     relation: "신랑",
     name: GROOM_FULLNAME,
-    phone: "010-0000-0000", // TODO: 연락처 입력
-    account: "은행명 계좌번호", // TODO: 계좌 입력
+    phone: "010-0000-0000", // TODO: 연락처 입력 (예정: 010-6203-7288)
+    account: "국민은행 942902-00-158775",
   },
   {
     relation: "신랑 아버지",
     name: GROOM_FATHER,
-    phone: "010-0000-0000",
-    account: "은행명 계좌번호",
+    phone: "010-0000-0000", // TODO: 연락처 입력 (예정: 010-9776-7288)
+    account: "국민은행 109-21-0761-822",
   },
   {
     relation: "신랑 어머니",
     name: GROOM_MOTHER,
-    phone: "010-0000-0000",
-    account: "은행명 계좌번호",
+    phone: "010-0000-0000", // TODO: 연락처 입력 (예정: 010-7258-8522)
+    account: "국민은행 561801-01-142452",
   },
 ]
