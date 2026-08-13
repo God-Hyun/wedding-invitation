@@ -150,9 +150,14 @@ export const Information2 = () => {
 
 export const Information = () => {
   return (
-    <LazyDiv className="card information">
-      <Information1 />
-      <Information2 />
-    </LazyDiv>
+    <>
+      {/* 카드 그룹은 넓은 화면에서 카드 2장이 가로로 배치되므로 분리해서 렌더링 */}
+      <LazyDiv className="card information">
+        <Information1 />
+      </LazyDiv>
+      <LazyDiv className="card information">
+        <Information2 />
+      </LazyDiv>
+    </>
   )
 }
