@@ -41,5 +41,23 @@
       height: 0.8rem;
       stroke: var(--alt-color);
     }
+
+    // sizer 와 text 를 같은 칸에 겹쳐 두어 너비는 항상 긴 문구 기준으로 유지
+    .label {
+      display: grid;
+      // 전역 `* { color }` 규칙 대신 버튼 색상을 물려받도록
+      color: inherit;
+      > * {
+        grid-area: 1 / 1;
+        white-space: nowrap;
+        color: inherit;
+      }
+      .sizer {
+        visibility: hidden;
+      }
+      .text {
+        text-align: center;
+      }
+    }
   }
 }

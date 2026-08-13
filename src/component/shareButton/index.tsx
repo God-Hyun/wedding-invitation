@@ -14,6 +14,9 @@ import { useKakao } from "../store"
 
 const baseUrl = import.meta.env.BASE_URL
 
+const COPY_TEXT = "링크 복사하기"
+const COPIED_TEXT = "링크가 복사되었어요 ✓"
+
 export const ShareButton = () => {
   const kakao = useKakao()
   const [copied, setCopied] = useState(false)
@@ -98,7 +101,13 @@ export const ShareButton = () => {
           <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
           <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
         </svg>
-        {copied ? "링크가 복사되었어요 ✓" : "링크 복사하기"}
+        <span className="label">
+          {/* 복사 전후 문구 길이가 달라 버튼 크기가 변하지 않도록 긴 문구로 너비를 고정 */}
+          <span className="sizer" aria-hidden="true">
+            {COPIED_TEXT}
+          </span>
+          <span className="text">{copied ? COPIED_TEXT : COPY_TEXT}</span>
+        </span>
       </button>
     </LazyDiv>
   )
